@@ -1,9 +1,8 @@
-import { defineConfig } from 'vite';
-import { join } from 'path';
-import vue from '@vitejs/plugin-vue';
+const { defineConfig } = require('vite');
+const { join } = require('path');
+const vue = require('@vitejs/plugin-vue');
 
-// https://vitejs.dev/config/
-export default defineConfig({
+module.exports = defineConfig({
   plugins: [vue()],
   server: {
     port: 3002,
@@ -25,8 +24,9 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      '@': join(__dirname, 'src'),
-    },
+    alias: [
+      { find: '@', replacement: join(__dirname, 'src') },
+      { find: /^vue3-video-play$/, replacement: 'vue3-video-play/dist/index.mjs' },
+    ],
   },
 });
