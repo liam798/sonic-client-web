@@ -30,7 +30,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: 'npm'
       - run: npm cache clear --force && npm install
       - run: npm run build
       - name: login docker hub
